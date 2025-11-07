@@ -12,7 +12,7 @@ logger = logging.getLogger("𝐒𝐎𝐔𝐑𝐂𝐄 𝙈𝙖𝙏𝙍𝙞𝙭")
 logger.info("سورس ماتركـس  اشتغل يحبيبي ✓")
 
 anti = False
-async def ahmed_nshr(fraon, sleeptimet, chat, message, seconds):
+async def bilal_nshr(fraon, sleeptimet, chat, message, seconds):
     global anti
     anti = True
     while anti:
@@ -40,7 +40,7 @@ async def ahmedf(event):
     for chat_username in chat_usernames:
         try:
             chat = await fraon.get_entity(chat_username)
-            await ahmed_nshr(fraon, seconds, chat.id, message, seconds)  # تمرير قيمة seconds هنا لكل مجموعة
+            await bilal_nshr(fraon, seconds, chat.id, message, seconds)  # تمرير قيمة seconds هنا لكل مجموعة
         except Exception as e:
             await event.reply(f"⌔∮ ماكو كروب بالاسم هذا 😂 {chat_username}: {str(e)}"
             )
