@@ -12,57 +12,57 @@ logger = logging.getLogger("𝐒𝐎𝐔𝐑𝐂𝐄 𝙈𝙖𝙏𝙍𝙞𝙭")
 logger.info("سورس ماتركـس  اشتغل يحبيبي ✓")
 
 anti = False
-async def bilal_nshr(fraon, sleeptimet, chat, message, seconds):
+async def bilal_nshr(BiLaL, sleeptimet, chat, message, seconds):
     global anti
     anti = True
     while anti:
         if message.media:
-            sent_message = await fraon.send_file(chat, message.media, caption=message.text)
+            sent_message = await BiLaL.send_file(chat, message.media, caption=message.text)
         else:
-            sent_message = await fraon.send_message(chat, message.text)
+            sent_message = await BiLaL.send_message(chat, message.text)
         await asyncio.sleep(sleeptimet)
         
         
         
         
 @BiLaL.on(events.NewMessage(outgoing=True, pattern=r"^\.نشر (\d+) (@?\S+)$"))
-async def ahmedf(event):
+async def BiLaLf(event):
     await event.delete()
     parameters = re.split(r'\s+', event.text.strip(), maxsplit=2)
     if len(parameters) != 3:
         return await event.reply("اڪتب الامر صح يغبي 😂♥")
     seconds = int(parameters[1])
     chat_usernames = parameters[2].split()
-    fraon = event.client
+    BiLaL = event.client
     global anti
     anti = True
     message = await event.get_reply_message()
     for chat_username in chat_usernames:
         try:
-            chat = await fraon.get_entity(chat_username)
-            await bilal_nshr(fraon, seconds, chat.id, message, seconds)  # تمرير قيمة seconds هنا لكل مجموعة
+            chat = await BiLaL.get_entity(chat_username)
+            await bilal_nshr(BiLaL, seconds, chat.id, message, seconds)  # تمرير قيمة seconds هنا لكل مجموعة
         except Exception as e:
             await event.reply(f"⌔∮ ماكو كروب بالاسم هذا 😂 {chat_username}: {str(e)}"
             )
         await asyncio.sleep(1)
 
     
-async def ahmed_allnshr(fraon, sleeptimet, message):
+async def ahmed_allnshr(BiLaL, sleeptimet, message):
     global anti
     anti = True
-    ahmed_chats = await fraon.get_dialogs()
+    BiLaL_chats = await BiLaL.get_dialogs()
     while anti:
-        for chat in ahmed_chats:
+        for chat in BiLaL_chats:
             if chat.is_group:
                 try:
                     if message.media:
-                        await fraon.send_file(chat.id, message.media, caption=message.text)
+                        await BiLaL.send_file(chat.id, message.media, caption=message.text)
                     else:
-                        await fraon.send_message(chat.id, message.text)
+                        await BiLaL.send_message(chat.id, message.text)
                 except Exception as e:
                     print(f"Error in sending message to chat {chat.id}: {e}")
         await asyncio.sleep(sleeptimet)
-@fraon.on(events.NewMessage(outgoing=True, pattern=r"^\.نشر_بالكروبات (\d+)$"))
+@BiLaL.on(events.NewMessage(outgoing=True, pattern=r"^\.نشر_بالكروبات (\d+)$"))
 async def ahmedf(event):
     await event.delete()
     seconds = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
@@ -71,29 +71,29 @@ async def ahmedf(event):
         sleeptimet = int(seconds[0])
     except Exception:
         return await event.reply("اڪتب الامر صح يغبي 😂♥")
-    fraon = event.client
+    BiLaL = event.client
     global anti
     anti = True
-    await ahmed_allnshr(fraon, sleeptimet, message)
+    await ahmed_allnshr(BiLaL, sleeptimet, message)
 
 super_groups = ["super", "سوبر"]
-async def ahmed_supernshr(fraon, sleeptimet, message):
+async def ahmed_supernshr(BiLaL, sleeptimet, message):
     global anti
     anti = True
-    ahmed_chats = await fraon.get_dialogs()
+    BiLaL_chats = await BiLaL.get_dialogs()
     while anti:
-        for chat in ahmed_chats:
+        for chat in BiLaL_chats:
             chat_title_lower = chat.title.lower()
             if chat.is_group and any(keyword in chat_title_lower for keyword in super_groups):
                 try:
                     if message.media:
-                        await fraon.send_file(chat.id, message.media, caption=message.text)
+                        await BiLaL.send_file(chat.id, message.media, caption=message.text)
                     else:
-                        await fraon.send_message(chat.id, message.text)
+                        await BiLaL.send_message(chat.id, message.text)
                 except Exception as e:
                     print(f"انت مش هناك يعبيط 😂♥ {chat.id}: {e}")
         await asyncio.sleep(sleeptimet)
-@fraon.on(events.NewMessage(outgoing=True, pattern=r"^\.سوبر (\d+)$"))
+@BiLaL.on(events.NewMessage(outgoing=True, pattern=r"^\.سوبر (\d+)$"))
 async def ahmedf(event):
     await event.delete()
     seconds = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
@@ -102,17 +102,17 @@ async def ahmedf(event):
         sleeptimet = int(seconds[0])
     except Exception:
         return await event.reply("اڪتب الامر صح يغبي 😂♥")
-    fraon = event.client
+    BiLaL = event.client
     global anti
     anti = True
-    await ahmed_supernshr(fraon, sleeptimet, message)
+    await ahmed_supernshr(BiLaL, sleeptimet, message)
 
-@fraon.on(events.NewMessage(outgoing=True, pattern='.وقف النشر'))
+@BiLaL.on(events.NewMessage(outgoing=True, pattern='.وقف النشر'))
 async def stop_ahmed(event):
     global anti
     anti = False
     await event.edit("**᯽︙ وقفتلك النشر ياعمي ♥ ** ")
-@fraon.on(events.NewMessage(outgoing=True, pattern=r"^\.(الاوامر|فحص)$"))
+@BiLaL.on(events.NewMessage(outgoing=True, pattern=r"^\.(الاوامر|فحص)$"))
 async def ahmedf(event):
     await event.delete()
     if event.pattern_match.group(1) == "الاوامر":
@@ -139,8 +139,8 @@ async def ahmedf(event):
     **"""
         await event.reply(file='https://files.catbox.moe/g4ve8h.mp4', message=FR3ON)
     elif event.pattern_match.group(1) == "فحص":
-        ahmedf_ali = "**[+] بوت النشر يعمل بنجاح✅\n[+] لو في مشكله كلمني\n t.me/div_bilal**"
-        await event.reply(file='https://envs.sh/zjH.jpg', message=ahmedf_ali)
+        BiLaL2 = "**[+] بوت النشر يعمل بنجاح✅\n[+] لو في مشكله كلمني\n t.me/div_bilal**"
+        await event.reply(file='https://envs.sh/zjH.jpg', message=BiLaL2)
 
 
 
