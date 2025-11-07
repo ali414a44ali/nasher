@@ -1,1 +1,1 @@
-pip3 install -U -r requirements.txt;python3 FR3ON.py
+pip3 install -U -r requirements.txt;python3 BiLaL.py
