@@ -25,7 +25,7 @@ async def bilal_nshr(fraon, sleeptimet, chat, message, seconds):
         
         
         
-@fraon.on(events.NewMessage(outgoing=True, pattern=r"^\.نشر (\d+) (@?\S+)$"))
+@BiLaL.on(events.NewMessage(outgoing=True, pattern=r"^\.نشر (\d+) (@?\S+)$"))
 async def ahmedf(event):
     await event.delete()
     parameters = re.split(r'\s+', event.text.strip(), maxsplit=2)
